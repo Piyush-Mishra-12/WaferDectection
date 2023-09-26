@@ -73,7 +73,6 @@ class Trainer:
             utils.save_obj(filepath=self.trainer_config.trainer_filepath, obj=custom_model)
             predicted = bmodel.predict(x_test)
             r2 = r2_score(y_test, y_pred= predicted)
-            utils.upload_file(from_filename=self.trainer_config.trainer_filepath, to_filename='model.dill', bucket_name=AWS_S3_BUCKET_NAME,)
             return r2
 
         except Exception as e:

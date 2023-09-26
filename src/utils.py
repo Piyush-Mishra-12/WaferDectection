@@ -22,7 +22,7 @@ def export_collection_as_dataframe(c_name, db_name):
         return df
     except Exception as e:
         logging.info('Error in collecting file from mongoDB')
-        raise CustomException(e,sys)
+        raise CustomException(e,sys) # type: ignore
 
 def save_obj(filepath, obj):
     try:
@@ -32,7 +32,7 @@ def save_obj(filepath, obj):
             dill.dump(obj, file_obj)
     except Exception as e:
         logging.info('Error in saving dill file')
-        raise CustomException(e,sys)
+        raise CustomException(e,sys) # type: ignore
 
 def load_object(filepath):
     try:
@@ -41,7 +41,7 @@ def load_object(filepath):
             return dill.load(file_obj)
     except Exception as e:
         logging.info('Error occured while loading object from utils')
-        raise CustomException(e,sys)
+        raise CustomException(e,sys) # type: ignore
 
 def upload_file(from_filename, to_filename, bucket_name):
     try:
@@ -49,16 +49,7 @@ def upload_file(from_filename, to_filename, bucket_name):
         s3_resource.upload_file(from_filename, to_filename, bucket_name)
     except Exception as e:
         logging.info('Error occured while uploading file from utils')
-        raise CustomException(e,sys)
-
-def download_model(bucket_name, bucket_filename, dest_filename):
-    try:
-        s3_client = boto3.client('s3')
-        s3_client.meta.clint.download_model(bucket_name, bucket_filename, dest_filename)
-        return dest_filename
-    except Exception as e:
-        logging.info('Error occured while downloading model from utils')
-        raise CustomException(e,sys)
+        raise CustomException(e,sys) # type: ignore
 
 def evaluate(x, y, models):
             try:
@@ -76,4 +67,4 @@ def evaluate(x, y, models):
 
             except Exception as e:
                 logging.info('Error occured while evaluting model from utils')
-                raise CustomException(e, sys)
+                raise CustomException(e, sys) # type: ignore

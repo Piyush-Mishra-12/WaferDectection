@@ -1,0 +1,15 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+flask
+kneed
+imbalanced-learn
+xgboost
+lightgbm
+catboost
+pymongo
+boto3
+dill
+-e .

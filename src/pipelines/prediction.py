@@ -11,7 +11,6 @@ class PredictFile:
     PredictFilename: str = "predicted.csv"
     PredictFilepath: str = os.path.join(Predict_Odir, PredictFilename)
 
-
 class Prediction:
     def __init__(self, request:request):
         self.request = request

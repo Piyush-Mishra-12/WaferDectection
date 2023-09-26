@@ -73,7 +73,6 @@ def evaluate(x, y, models):
                     test_model_score = r2_score(y_test, y_test_pred)
                     report[list(models.keys())[i]] = test_model_score
                 return report
-
             except Exception as e:
                 logging.info('Error occured while evaluting model from utils')
                 raise CustomException(e, sys)

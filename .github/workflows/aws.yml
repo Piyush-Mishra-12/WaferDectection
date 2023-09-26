@@ -51,6 +51,6 @@ jobs:
         run: |
           # Build a docker container and
           # push it to ECR so that it can
-          # be deployed to ECR
+          # be deployed to ECR.
           docker build -t ${{ secrets.AWS_ECR_REPO_URI }}:$IMAGE_TAG .
           docker push ${{ secrets.AWS_ECR_REPO_URI }}:$IMAGE_TAG

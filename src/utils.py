@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 from pymongo import MongoClient
 
+
 def export_collection_as_dataframe(c_name, db_name):
     try:
         MONGO_DB_URL = "mongodb+srv://Piyush12:EtxAzA28XTrwLjzX@cluster0.83fdgam.mongodb.net/?retryWrites=true&w=majority"
@@ -43,14 +44,6 @@ def load_object(filepath):
         logging.info('Error occured while loading object from utils')
         raise CustomException(e,sys) # type: ignore
 
-def upload_file(from_filename, to_filename, bucket_name):
-    try:
-        s3_resource = boto3.client('s3')
-        s3_resource.upload_file(from_filename, to_filename, bucket_name)
-    except Exception as e:
-        logging.info('Error occured while uploading file from utils')
-        raise CustomException(e,sys) # type: ignore
-
 def evaluate(x, y, models):
             try:
                 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
@@ -64,7 +57,6 @@ def evaluate(x, y, models):
                     test_model_score = r2_score(y_test, y_test_pred)
                     report[list(models.keys())[i]] = test_model_score
                 return report
-
             except Exception as e:
                 logging.info('Error occured while evaluting model from utils')
                 raise CustomException(e, sys) # type: ignore
